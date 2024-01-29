@@ -1,14 +1,22 @@
+
+
+
+
+
+
 const express = require('express')
 const sqlite3 = require('sqlite3')
 const app = express()
 
+
 const db = new sqlite3.Database('./Database/Books.sqlite3')
+
 
 app.use(express.json())
 
                     // ไม่สร้างซ่ำ Table ชื่อ books
 db.run(`CREATE TABLE IF NOT EXISTS books( 
-    id INTEGER PRIMARY KEY,
+    id INTEAGER PRIMARY KEY,
     title TEXT,
     author TEXT
 )`)
@@ -54,9 +62,8 @@ app.post('/books',(req,res)=>{
 
 
 app.put('/books/:id',(req,res)=>{
-    const book = req.body;
-    console.log("Test");
-    db.run('UPDATE books SET title = ?, author = ? WHERE = ?' ,book.title, book.author,req.params.id,function(err){
+    const book = req.body
+    db.run('UPDATE books SET title = ? author = ? WHERE = ?' ,book.title, book.author,req.params.id,function(err){
         if(err){
             res.status(500).send(err)
         }else{
