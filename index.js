@@ -1,4 +1,4 @@
-const expresss = require('express');
+const express = require('express');
 const Sequelize = require('sequelize');
 const app = express();
 
