@@ -29,7 +29,7 @@ const Book = sequelize.define('book',{
 
 sequelize.sync();
 
-app.get('books',(req,res)  => {
+app.get('/books',(req,res)  => {
     Book.findAll().then(books => {
         res.json(books);
     }).catch(err => {
